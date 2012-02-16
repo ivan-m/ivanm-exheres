@@ -1,0 +1,21 @@
+# Copyright (c) 2009 Jan Meier (taken from https://github.com/codejunky/exherbo )
+#               2012 Ivan Lazar Miljenovic
+# Distributed under the terms of the GNU General Public License v2
+
+require sourceforge [ suffix="tar.gz" ]
+
+SUMMARY="A simple set of tools to help you author a DVD."
+SLOT="0"
+LICENCES="GPL-2"
+PLATFORMS="~amd64 ~x86"
+MYOPTIONS=""
+DEPENDENCIES="
+    dev-libs/fribidi
+    sys-libs/zlib
+    media-libs/libpng
+    media-libs/fontconfig
+    dev-libs/libxml2[>=2.6.0]
+    media-libs/libdvdread
+    media-gfx/ImageMagick[>=5.5.7]
+"
+WORK="${WORKBASE}/${PN}"

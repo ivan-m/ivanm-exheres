@@ -1,0 +1,53 @@
+# Copyright 2012 Ivan Miljenovic <Ivan.Miljenovic@gmail.com>
+# Distributed under the terms of the GNU General Public License v2
+
+require python [[ python_dep=2.7 has_lib=false has_bin=true ]]
+
+SUMMARY="Convert Video Files to DVD for Free"
+
+DESCRIPTION="
+DeVeDe is a free, open-source Video to DVD converter. It will transform various formats of video to
+a DVD Player playable video DVD, VideoCD, Super VideoCD, China VideoDisc, or DivX/MPEG-4 compliant
+image which it will then offer to start burning it. You can download DeVeDe for free and start
+converting AVI, MP4 and MPG to DVD now, no watermarks, no premium version
+
+DeVeDe will, completely free, convert:
+
+* AVI to DVD
+* MP4 to DVD
+* MPG to DVD
+"
+
+HOMEPAGE="http://devede.org http://www.rastersoft.com/programas/devede.html"
+DOWNLOADS="http://www.rastersoft.com/descargas/${PNV}.tar.bz2"
+
+LICENCES="GPL-3"
+SLOT="0"
+PLATFORMS="~amd64"
+
+MYOPTIONS=""
+
+DEPENDENCIES="
+    run:
+        media/mplayer[mp3]
+        media/dvdauthor
+        media-libs/vcdimager[popt]
+        media/ffmpeg[mp3] [[ note = [ default backend; mp3 needed for divx support ] ]]
+        || (
+            app-cdr/cdrtools
+            app-cdr/cdrkit
+        )
+        gnome-bindings/pygtk
+        gnome-bindings/pygobject:2
+        dev-python/pycairo
+"
+
+src_install() {
+    # Seems to be a copy-paste error; not using a patch as next version might have a better
+    # installation system.
+    edo sed -i -e "69 s|pixmaps|pixmaps/backgrounds|" install.sh
+
+    edo ./install.sh --uninstall=no --targeted=yes --DESTDIR="${IMAGE}" --prefix=/usr \
+        --pkgdocdir="/usr/share/doc/${PNVR}" --libdir="/usr/${LIBDIR}"
+}
+

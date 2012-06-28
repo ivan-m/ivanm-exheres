@@ -1,7 +1,7 @@
 # Copyright 2012 Ivan Lazar Miljenovic <Ivan.Miljenovic@gmail.com>
 # Distributed under the terms of the GNU General Public License v2
 
-require pypi python
+require pypi distutils
 
 SUMMARY="A Python JSON module and lint checker"
 DESCRIPTION="
@@ -14,4 +14,9 @@ LICENCES="LGPL-3"
 SLOT="0"
 PLATFORMS="~amd64"
 MYOPTIONS=""
+
+DEPENDENCIES="
+    build+run:
+        dev-lang/python[<3]
+"
 

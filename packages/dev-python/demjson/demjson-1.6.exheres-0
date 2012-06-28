@@ -1,0 +1,17 @@
+# Copyright 2012 Ivan Lazar Miljenovic <Ivan.Miljenovic@gmail.com>
+# Distributed under the terms of the GNU General Public License v2
+
+require pypi python
+
+SUMMARY="A Python JSON module and lint checker"
+DESCRIPTION="
+This is a comprehensive python language binding to the JSON language-independent data encoding
+standard, which is often used as a simpler subtitute for XML in AJAX-based web applications.
+"
+HOMEPAGE="http://deron.meranda.us/python/demjson/ ${HOMEPAGE}"
+
+LICENCES="LGPL-3"
+SLOT="0"
+PLATFORMS="~amd64"
+MYOPTIONS=""
+

@@ -1,0 +1,31 @@
+# Copyright 2012 Ivan Lazar Miljenovic <Ivan.Miljenovic@gmail.com>
+# Distributed under the terms of the GNU General Public License v2
+
+require pypi [[ suffix=zip ]] distutils [[ python_dep=2.4 ]]
+
+SUMMARY="Store and access your passwords safely."
+DESCRIPTION="
+The Python keyring lib provides a easy way to access the system keyring service
+from python. It can be used in any application that needs safe password storage.
+
+The keyring services supported by the Python keyring lib:
+
+* **OSXKeychain**: supports the Keychain service in Mac OS X.
+* **KDEKWallet**: supports the KDE's Kwallet service.
+* **GnomeKeyring**: for Gnome 2 environment.
+* **SecretServiceKeyring**: for newer GNOME and KDE environments.
+
+Besides these native password storing services provided by operating systems.
+Python keyring lib also provides following build-in keyrings.
+
+* **Win32CryptoKeyring**: for Windows 2k+.
+* **CryptedFileKeyring**: a command line interface keyring base on PyCrypto.
+* **UncryptedFileKeyring**: a keyring which leaves passwords directly in file.
+"
+HOMEPAGE="http://bitbucket.org/kang/python-keyring-lib ${HOMEPAGE}"
+
+LICENCES="PSF"
+SLOT="0"
+PLATFORMS="~amd64"
+MYOPTIONS=""
+

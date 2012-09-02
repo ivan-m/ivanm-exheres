@@ -1,0 +1,42 @@
+# Copyright 2012 Ivan Lazar Miljenovic <Ivan.Miljenovic@gmail.com>
+# Distributed under the terms of the GNU General Public License v2
+
+SUMMARY="GtkLP and GtkLPQ are two tools to use and administrate CUPS a better way."
+DESCRIPTION="
+GtkLP is an graphical frontend for CUPS, the Common UNIX Printing System.  It is used to have an
+easy (and graphical) access to all of the many options of cups-managed printers.
+"
+HOMEPAGE="http://gtklp.sirtobi.com/"
+DOWNLOADS="mirror://sourceforge/${PN}/${PNV}.src.tar.gz" # "http://sourceforge.net/projects/${PN}/files/${PN}/${PV}/${PN}-${PV}.tar.gz/download"
+
+LICENCES="GPL-2"
+SLOT="0"
+PLATFORMS="~amd64"
+MYOPTIONS="ssl"
+
+DEPENDENCIES="
+    build:
+    build+run:
+        x11-libs/gtk+:2
+        dev-libs/glib
+        x11-libs/libX11 [[ note = [ explicitly links against -lX11 ] ]]
+        net-print/cups[>=1.1.10]
+        sys-devel/gettext
+
+        ssl? ( dev-libs/openssl )
+"
+
+DEFAULT_SRC_CONFIGURE_PARAMS=( --enable-nls )
+DEFAULT_SRC_CONFIGURE_OPTION_WITHS=( )
+DEFAULT_SRC_CONFIGURE_OPTION_ENABLES=( ssl )
+
+src_prepare() {
+    default
+
+    edo sed -e '/DEF_BROWSER_CMD/{s:netscape:firefox:}' \
+            -e '/DEF_HELP_HOME/{s:631/sum.html#STANDARD_OPTIONS:631/help/:}' \
+            -i include/defaults.h
+
+    eautoreconf # avoid "maintainer mode"
+}
+

@@ -24,3 +24,5 @@ DEPENDENCIES="
         sys-devel/gettext
 "
 
+DEFAULT_SRC_PREPARE_PATCHES=( "${FILES}"/${PN}_dont_highlight_line_numbers.patch )
+

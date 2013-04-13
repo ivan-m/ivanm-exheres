@@ -1,0 +1,24 @@
+Source: Ivan Lazar Miljenovic <Ivan.Miljenovic@gmail.com>
+Upstream: Not yet
+Reason: Line numbers get highlighted even when they shouldn't. http://savannah.gnu.org/bugs/?31844
+
+diff -rupN enscript-1.6.6/src/psgen.c enscript-1.6.6.new/src/psgen.c
+--- enscript-1.6.6/src/psgen.c	2011-10-31 03:48:42.000000000 +1100
++++ enscript-1.6.6.new/src/psgen.c	2013-04-13 22:42:30.287489018 +1000
+@@ -2761,7 +2761,16 @@ print_line_number (double x, double y, d
+     len += CHAR_WIDTH (buf[i]);
+
+   /* Print line numbers. */
++  if (user_colorp) {
++    OUTPUT ((cofp, "0 setgray\n"));
++  }
+   OUTPUT ((cofp, "%g %g M (%s:) s\n", x + space - len, y, buf));
++  if (user_colorp) {
++    OUTPUT ((cofp, "%g %g %g setrgbcolor\n",
++             user_color.r,
++             user_color.g,
++             user_color.b));
++  }
+
+   if (user_fontp)
+     {

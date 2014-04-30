@@ -20,7 +20,7 @@ DEPENDENCIES="
         x11-libs/gtk+:2
         dev-libs/glib
         x11-libs/libX11 [[ note = [ explicitly links against -lX11 ] ]]
-        net-print/cups[>=1.1.10]
+        net-print/cups[>=1.1.12]
         sys-devel/gettext
 
         ssl? ( dev-libs/openssl )

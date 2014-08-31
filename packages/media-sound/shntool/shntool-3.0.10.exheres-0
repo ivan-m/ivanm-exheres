@@ -1,0 +1,38 @@
+# Copyright 2010 Johannes Nixdorf <mixi@user-helfen-usern.de>
+# Distributed under the terms of the GNU General Public License v2
+
+require autotools [ supported_autoconf=[ 2.5 ] supported_automake=[ 1.11 ] ]
+
+SUMMARY="shntool is a multi-purpose WAVE data processing and reporting utility."
+HOMEPAGE="http://etree.org/shnutils/shntool/"
+
+LICENCES="GPL-2"
+SLOT="0"
+PLATFORMS="~amd64"
+MYOPTIONS=""
+
+DOWNLOADS="http://etree.org/shnutils/shntool/dist/src/${PNV}.tar.gz"
+
+DEPENDENCIES="
+    suggestion:
+        media-libs/flac [[ description = [ For flac support ] ]]
+        media-sound/shorten [[ description = [ For shn support ] ]]
+        media-sound/sox [[ description = [ For aiff support ] ]]
+"
+
+# shorten -> shn
+# flac
+# sox -> aiff
+# mac -> ape
+# ofr
+# lpac
+# wvunpack
+# alac
+# la
+# ttaenc -> tta
+# mp4als -> als
+# mkwcon -> mkw
+# takc -> tak
+# bonk
+# kexis -> kxs
+
